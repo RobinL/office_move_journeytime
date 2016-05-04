@@ -75,7 +75,12 @@
     <script src="js/custom_code/voronoi_map.js"></script>
     <script>
     L.mapbox.accessToken = 'pk.eyJ1Ijoicm9iaW5saW5hY3JlIiwiYSI6IjAwYTg3MDAwNmFlZTk3MDlhNGIxY2VjNDk5Yjk4NWE1In0.DWAN8Om-9kOnwVTQIiDGaw';
-    map = L.mapbox.map('map', 'mapbox.light')
+    map = L.mapbox.map('map', 'mapbox.light', {attributionControl: false})
+
+    var credits = L.control.attribution().addTo(map);
+    credits.addAttribution('© Mapbox © OpenStreetMap | Powered by TfL Open Data ');
+
+
     map.setView([53,0],7)
     url = '';
     
