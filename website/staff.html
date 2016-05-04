@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>s
+    <meta charset="utf-8">
+    <link href="base_staff.css" rel="stylesheet" />
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id='map'>
+    </div>
+    
+    <div id="padded-options">
+      <div id=flex-options-container>
+      </div>
+      <div id=flex-options-container>
+        <div class="flex_item">
+          <div id='metric' class='selections2'>
+            <label for="metricOptions">Select which metric to display:
+              </br>
+              <select name="metricOptions" id="metricOptions">
+              </select>
+            </label>
+          </div>
+        </div>
+        
+        <div class="flex_item">
+          <div id='colour' class='selections2'>
+            <label for="colourOptions">Select colour scheme:
+              </br>
+              <select name="colourOptions" id="colourOptions">
+              </select>
+            </label>
+          </div>
+        </div>
+
+         <div class="flex_item">
+          <div id='maps' class='selections2'>
+            <label for="mapOptions">Select colour scheme:
+              </br>
+              <input type="checkbox" name="vehicle" value="map" id="mapoptions">Show directions in Google maps<br>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex_item">
+          <div id='opacity_select' class='selections2'>
+            <label for="mapOptions">Voronoi opacity
+              </br>
+              <input type="number" name="quantity" min="0" max="1" id="opacity_option" step=0.05 value=0.4>
+              
+            </label>
+          </div>
+        </div>
+        <!-- 
+        
+        <div class="flex_item">
+          <div id="import_csvs" class="fileupload main">
+            <fieldset>
+              <legend>Upload your CSV File</legend>
+              <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
+            </fieldset>
+          </div>
+        </div> -->
+        
+      </div>
+    </div>
+    <div id='loading'>
+    </div>
+    <div id='selected'>
+      <h1>Hover over voronoi areas to display statistics</h1>
+    
+    </div>
+      <div id='selected_maps'>
+      <h1>Hover over voronoi areas to display Google directions</h1>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="js/third_party/topojson.min.js"></script>
+    <script src="js/third_party/handlebars-v4.0.5.js"></script>
+    <script src="js/third_party/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.8/d3.min.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js"></script>
+    <script src="js/custom_code/column_description_staff.js"></script>
+    <script src="js/custom_code/voronoi_map_staff.js"></script>
+    <script>
+    L.mapbox.accessToken = 'pk.eyJ1Ijoicm9iaW5saW5hY3JlIiwiYSI6IjAwYTg3MDAwNmFlZTk3MDlhNGIxY2VjNDk5Yjk4NWE1In0.DWAN8Om-9kOnwVTQIiDGaw';
+    map = L.mapbox.map('map', 'mapbox.light')
+    map.setView([53,0],7)
+    url = '';
+    
+    voronoiMap(map, url);
+    </script>
+    <script id="view_location_info" type="text/x-handlebars-template">
+    <div class="entry">
+      <div>
+        <h2>{{station_name}}</h2>
+        <h4>Current journey time (minutes):  {{original_journey_time}}</h4>
+        <h4>New journey time (minutes):  {{new_journey_time}}</h4>
+        <h4>Change in journey time (minutes):  {{change_in_journey_time}}</h4>
+      </div>
+    </div>
+
+  
+    </script>
+
+    <script id="view_google_maps_data" type="text/x-handlebars-template">
+  
+    <div id="googlemapholder"></div>
+    <iframe src="https://www.google.co.uk/maps/embed/v1/directions?key=AIzaSyCH-i-hcOBib4Go2-gbenQFrP_OJAAIwdE&origin={{lat}},{{lng}}&destination=51.5137638,-0.09838&mode=transit"  height="450px" width="400px"></iframe>
+    <br></br>
+    <iframe src="https://www.google.co.uk/maps/embed/v1/directions?key=AIzaSyCH-i-hcOBib4Go2-gbenQFrP_OJAAIwdE&origin={{lat}},{{lng}}&destination=51.5388209,-0.1424962&mode=transit"  height="450px" width="400px"></iframe>
+    </script>
+  </body>
+</html>

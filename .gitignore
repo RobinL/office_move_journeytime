@@ -1,0 +1,9 @@
+.env
+*.shp
+*.csv
+*.json
+*.p
+.DS_Store
+.ipynb_checkpoints/
+qgis/
+*.pyc
