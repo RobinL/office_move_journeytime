@@ -11,6 +11,6 @@ The [first](http://robinl.github.io/office_move_journeytime/website/) is a map o
 The [second](http://robinl.github.io/office_move_journeytime/website/staff.html) is a map of travel time for each member of staff (as identified by a postcode).
 
 Here are some screengrabs:
-![Alt text](/pics/journeytime?raw=true "Journeytime")
+![Alt text](/pics/journeytime.png?raw=true "Journeytime")
 
 
